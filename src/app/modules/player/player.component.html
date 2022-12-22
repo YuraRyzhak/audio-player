@@ -1,0 +1,13 @@
+<div class="container" *ngFor="let file of files">
+  <div>
+    <p>{{file.title}}</p>
+    <p>{{file.author}}</p>
+  </div>
+  <audio #audio>
+    <source [src]=file.url>
+  </audio>
+  <button *ngIf="audio.paused; else play" (click)="audio.play()">Play</button>
+  <ng-template #play>
+    <button *ngIf="audio.played" (click)="audio.pause()">Pause</button>
+  </ng-template>
+</div>
